@@ -95,12 +95,12 @@ body, html {
 }
 
 @keyframes Laser {
-    0%   { top: 20%; left: 15%; }
-    20%  { top: 70%; left: 80%; }
-    40%  { top: 10%; left: 60%; }
-    60%  { top: 85%; left: 30%; }
-    80%  { top: 40%; left: 90%; }
-    100% { top: 20%; left: 15%; }
+    0%   { transform: translate(15vw, 20vh); }
+    20%  { transform: translate(80vw, 70vh); }
+    40%  { transform: translate(60vw, 10vh); }
+    60%  { transform: translate(30vw, 85vh); }
+    80%  { transform: translate(90vw, 40vh); }
+    100% { transform: translate(15vw, 20vh); }
 }
 
 .yarn-1 { top: 5vh; left: 25vw; animation: bounceVertical 5s infinite ease-in-out; }
