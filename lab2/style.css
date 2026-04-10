@@ -64,6 +64,8 @@ body, html {
     font-size: 10px;
     font-weight: bold;
     color: #ffc0cb;
+    position: absolute;
+    bottom: 5px;
     user-select: none;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
@@ -92,6 +94,15 @@ body, html {
     100% { transform: rotate(360deg) translate(80px) rotate(-360deg); }
 }
 
+@keyframes Laser {
+    0%   { top: 20%; left: 15%; }
+    20%  { top: 70%; left: 80%; }
+    40%  { top: 10%; left: 60%; }
+    60%  { top: 85%; left: 30%; }
+    80%  { top: 40%; left: 90%; }
+    100% { top: 20%; left: 15%; }
+}
+
 .yarn-1 { top: 5vh; left: 25vw; animation: bounceVertical 5s infinite ease-in-out; }
 .yarn-2 { top: 15vh; left: 40vw; animation: bounceVertical 7s infinite reverse ease-in-out; }
 .yarn-3 { top: 40vh; left: 55vw; animation: circleMove 4s infinite linear; }
@@ -99,19 +110,16 @@ body, html {
 .yarn-5 { top: 60vh; left: 35vw; animation: bounceVertical 9s infinite ease-in-out; }
 .yarn-6 { top: 20vh; left: 80vw; animation: bounceVertical 4s infinite reverse ease-in-out; }
 
-.instructions {
+body::after {
+    content: '';
     position: fixed;
-    bottom: 2vh;
-    left: 2vw;
-    color: white;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    border-left: 3px solid pink;
+    width: 8px;
+    height: 8px;
+    background: #ff3b3b;
+    border-radius: 50%;
+    box-shadow: 0 0 15px 5px rgba(255, 59, 59, 0.6), 0 0 30px 10px rgba(255, 59, 59, 0.2);
+    z-index: -1;
     pointer-events: none;
-    z-index: 100;
-    max-width: 300px;
-    box-shadow: 7px 10px 10px rgba(0,0,0,0.5);
+    opacity: 0.5;
+    animation: Laser 15s infinite ease-in-out;
 }
-.instructions h2 { margin: 0; color: #ffc0cb; font-size: 20px; }
-.instructions p { margin: 8px 0 0; font-size: 15px; line-height: 1.4; }
