@@ -1,0 +1,24 @@
+:root {
+    --base: #1e1e2e;
+    --mantle: #181825;
+    --crust: #11111b;
+    --surface0: #313244;
+    --surface1: #45475a;
+    --surface2: #585b70;
+    
+    --text: #cdd6f4;
+    --subtext0: #a6adc8;
+    --subtext1: #bac2de;
+    
+    --blood-red: #f38ba8;
+    --imperial-gold: #f9e2af;
+    --plasma-blue: #89b4fa;
+    --ork-green: #a6e3a1;
+    --warp-purple: #cba6f7;
+    
+    --radius-lg: 20px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
