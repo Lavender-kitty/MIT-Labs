@@ -1,0 +1,134 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #02010a;
+    background-image: 
+        radial-gradient(white, rgba(255,255,255,.2) 0.2vmin, transparent 4vmin),
+        radial-gradient(white, rgba(255,255,255,.15) 0.1vmin, transparent 3vmin);
+    background-size: 50vw 50vw, 30vw 30vw;
+}
+
+.game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.rocket-hero {
+    position: absolute;
+    left: 5vw;
+    top: 45vh;
+    width: 10vmin;
+    height: 10vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1;
+    transition: left 4s linear;
+}
+
+.rocket-hero:hover {
+    left: 85vw;
+}
+
+.rocket-hero:not(:hover) {
+    transition: left 2s ease-in;
+    filter: grayscale(0.5);
+}
+
+.rocket-sprite {
+    font-size: 6vmin;
+    user-select: none;
+    transform: rotate(45deg);
+    transition: transform 0.3s;
+}
+
+.rocket-hero:hover .rocket-sprite {
+    transform: scale(1.1) rotate(45deg);
+    filter: drop-shadow(0 0 1vmin #ffae00);
+}
+
+.obstacle {
+    position: absolute;
+    font-size: 8vmin;
+    z-index: 2;
+    user-select: none;
+    pointer-events: auto;
+    filter: drop-shadow(0 0 1.5vmin rgba(255, 255, 255, 0.2));
+    top: -20vh;
+    left: -20vw;
+}
+
+.bg-comet {
+    position: fixed;
+    font-size: 3vmin;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    filter: grayscale(100%) brightness(0.8);
+    top: -20vh;
+    left: -20vw;
+}
+
+@keyframes bounceVertical {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(20vh); }
+}
+
+@keyframes bounceDiagonal {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(10vw, 15vh); }
+}
+
+@keyframes circleMove {
+    0% { transform: rotate(0deg) translate(10vw) rotate(0deg); }
+    100% { transform: rotate(360deg) translate(10vw) rotate(-360deg); }
+}
+
+@keyframes MeteorPath1 {
+    0% { transform: translate(110vw, -20vh); }
+    100% { transform: translate(-20vw, 110vh); }
+}
+
+@keyframes MeteorPath2 {
+    0% { transform: translate(80vw, -20vh); }
+    100% { transform: translate(-50vw, 110vh); }
+}
+
+@keyframes MeteorPath3 {
+    0% { transform: translate(40vw, -20vh); }
+    100% { transform: translate(-90vw, 110vh); }
+}
+
+@keyframes CometPath1 {
+    0% { transform: translate(110vw, -10vh); opacity: 0; }
+    5% { opacity: 0.8; }
+    30% { transform: translate(-10vw, 110vh); opacity: 0; }
+    100% { transform: translate(-10vw, 110vh); opacity: 0; }
+}
+
+@keyframes CometPath2 {
+    0% { transform: translate(60vw, -10vh); opacity: 0; }
+    5% { opacity: 0.6; }
+    30% { transform: translate(-50vw, 100vh); opacity: 0; }
+    100% { transform: translate(-50vw, 100vh); opacity: 0; }
+}
+
+.space-obj-1 { top: 35vh; left: 25vw; animation: bounceVertical 5s infinite ease-in-out; }
+.space-obj-3 { top: 42vh; left: 55vw; animation: circleMove 4s infinite linear; }
+.space-obj-4 { top: 38vh; left: 70vw; animation: bounceDiagonal 6s infinite alternate ease-in-out; }
+.space-obj-5 { top: 48vh; left: 35vw; animation: bounceVertical 9s infinite ease-in-out reverse; }
+
+.meteor-1 { animation: MeteorPath1 7s infinite linear; }
+.meteor-2 { animation: MeteorPath2 10s infinite linear 3s; }
+.meteor-3 { animation: MeteorPath3 13s infinite linear 6s; }
+
+.bg-comet-1 { animation: CometPath1 15s infinite linear; }
+.bg-comet-2 { animation: CometPath2 20s infinite linear 5s; }
+.bg-comet-3 { animation: CometPath1 25s infinite linear 12s; }
+.bg-comet-4 { animation: CometPath2 18s infinite linear 8s; }
