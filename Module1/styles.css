@@ -1,0 +1,121 @@
+:root {
+    --bg-color: #EFF1FA;
+    --card-shadow: rgba(0, 0, 0, 0.25);
+    --overlay-bg: rgba(0, 0, 0, 0.65);
+    --text-white: #FFFFFF;
+    --text-dim: #D8D8D8;
+    --border-color: rgba(255, 255, 255, 0.25);
+    --accent-color: #FBC75B;
+
+    --radius-large: 2rem;
+    --radius-medium: 1.5rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir, "Segoe UI", "Helvetica Neue", "Adwaita Sans", Cantarell, Ubuntu, Roboto, Noto, Helvetica, Arial, sans-serif;
+}
+
+.recipe-card {
+    position: relative;
+    width: 950px;
+    height: 650px;
+    border-radius: var(--radius-large);
+    overflow: hidden;
+    background-image: url('receipt.jpg');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 30px 60px var(--card-shadow);
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+    width: 480px;
+    background: var(--overlay-bg);
+    backdrop-filter: blur(12px);
+    padding: 50px;
+    border-radius: var(--radius-medium);
+    color: var(--text-white);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+h1 {
+    font-family: 'Georgia', serif;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+}
+
+.stats-row {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+}
+
+.icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: var(--accent-color);
+    fill: none;
+}
+
+.icon-hat svg path {
+    fill: var(--accent-color);
+    stroke: none;
+}
+
+.stat-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50px;
+}
+
+.stat-value {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
+.description {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--text-dim);
+    font-weight: 400;
+}
