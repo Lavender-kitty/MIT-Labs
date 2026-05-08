@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evil Volume Slider</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Volume</h1>
+        <div class="slider-wrapper">
+            <span id="volumeValue">50%</span>
+            <input type="range" min="0" max="100" value="50" class="slider" id="volumeSlider">
+        </div>
+        <p class="hint">Try to change the volume... if you dare!</p>
+    </div>
+
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h2>ATTENTION!</h2>
+            <p>Are you absolutely sure you want to change the volume?</p>
+            
+            <div id="captchaContainer" class="captcha-box">
+                <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" data-callback="onCaptchaSuccess"></div>
+            </div>
+
+            <div class="modal-buttons">
+                <button id="btnYes" class="btn yes" disabled>Yes, I'm Sure</button>
+                <button id="btnNo" class="btn no">No, Take Me Back!</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
