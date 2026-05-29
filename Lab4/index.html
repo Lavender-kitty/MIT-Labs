@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <header class="main-header">
+            <h1>Todo List</h1>
+        </header>
+
+        <div class="main-layout">
+            <main class="content-area">
+                <div class="todo-lists-container">
+                    <section class="list-container">
+                        <h2 class="sub-header">Pending</h2>
+                        <!-- тута будуть жить не виполеные таски -->
+                        <div id="pending-groups" class="groups-wrapper"></div>
+                    </section>
+
+                    <section class="list-container">
+                        <h2 class="sub-header">Completed</h2>
+                        <!-- а тута уже готовые дела -->
+                        <div id="completed-groups" class="groups-wrapper"></div>
+                    </section>
+                </div>
+            </main>
+
+            <aside class="sidebar">
+                <section class="sidebar-section">
+                    <h2 class="sidebar-header">New Task</h2>
+                    <div class="input-group">
+                        <input type="text" id="todo-title" placeholder="Title..." class="todo-input">
+                        <textarea id="todo-desc" placeholder="Description..." class="todo-textarea"></textarea>
+                        <select id="todo-group-select" class="todo-select">
+                            <!-- сюда жс накидает опций -->
+                            <option value="General">General</option>
+                        </select>
+                        <button id="add-btn" class="add-button">Add Task</button>
+                    </div>
+                </section>
+
+                <section class="sidebar-section">
+                    <h2 class="sidebar-header">Manage Groups</h2>
+                    <div class="input-group">
+                        <input type="text" id="new-group-name" placeholder="Group name..." class="todo-input">
+                        <button id="add-group-btn" class="add-button secondary">Create Group</button>
+                    </div>
+                    <ul id="groups-list" class="sidebar-list"></ul>
+                </section>
+            </aside>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
