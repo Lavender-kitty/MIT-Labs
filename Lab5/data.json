@@ -1,0 +1,116 @@
+[
+  {
+    "artist": "Deathstars",
+    "image": "images/Deathstars.jpg",
+    "songs": [
+      {
+        "title": "Blitzkrieg",
+        "path": "songs/Deathstars/Blitzkrieg.mp3"
+      },
+      {
+        "title": "Cyanide",
+        "path": "songs/Deathstars/Cyanide.mp3"
+      },
+      {
+        "title": "Death in Vogue",
+        "path": "songs/Deathstars/Death in Vogue.mp3"
+      },
+      {
+        "title": "Greatest Fight on Earth",
+        "path": "songs/Deathstars/Greatest Fight on Earth.mp3"
+      },
+      {
+        "title": "Motherzone",
+        "path": "songs/Deathstars/Motherzone.mp3"
+      },
+      {
+        "title": "Play God",
+        "path": "songs/Deathstars/Play God.mp3"
+      },
+      {
+        "title": "Termination Bliss",
+        "path": "songs/Deathstars/Termination Bliss.mp3"
+      },
+      {
+        "title": "The Last Ammunition",
+        "path": "songs/Deathstars/The Last Ammunition.mp3"
+      },
+      {
+        "title": "Tongues",
+        "path": "songs/Deathstars/Tongues.mp3"
+      },
+      {
+        "title": "Virtue to Vice",
+        "path": "songs/Deathstars/Virtue to Vice.mp3"
+      }
+    ]
+  },
+  {
+    "artist": "Heldmaschine",
+    "image": "images/Heldmaschine.jpg",
+    "songs": [
+      {
+        "title": "Alles was Du brauchst",
+        "path": "songs/Heldmaschine/Alles was Du brauchst.mp3"
+      },
+      {
+        "title": "Doktor",
+        "path": "songs/Heldmaschine/Doktor.mp3"
+      },
+      {
+        "title": "Erfroren und verbrannt",
+        "path": "songs/Heldmaschine/Erfroren und verbrannt.mp3"
+      },
+      {
+        "title": "Foltergeist",
+        "path": "songs/Heldmaschine/Foltergeist.mp3"
+      },
+      {
+        "title": "Gammelfleisch",
+        "path": "songs/Heldmaschine/Gammelfleisch.mp3"
+      },
+      {
+        "title": "Gnadenlos",
+        "path": "songs/Heldmaschine/Gnadenlos.mp3"
+      },
+      {
+        "title": "Heldmaschine",
+        "path": "songs/Heldmaschine/Heldmaschine.mp3"
+      },
+      {
+        "title": "Königin",
+        "path": "songs/Heldmaschine/Königin.mp3"
+      },
+      {
+        "title": "La Paloma",
+        "path": "songs/Heldmaschine/La Paloma.mp3"
+      },
+      {
+        "title": "Radioaktiv",
+        "path": "songs/Heldmaschine/Radioaktiv.mp3"
+      },
+      {
+        "title": "Völkerball",
+        "path": "songs/Heldmaschine/Völkerball.mp3"
+      },
+      {
+        "title": "Weichen und Zunder",
+        "path": "songs/Heldmaschine/Weichen und Zunder.mp3"
+      }
+    ]
+  },
+  {
+    "artist": "SAMURAI",
+    "image": "images/SAMURAI.jpg",
+    "songs": [
+      {
+        "title": "Archangel",
+        "path": "songs/SAMURAI/Archangel.mp3"
+      },
+      {
+        "title": "Black Dog",
+        "path": "songs/SAMURAI/Black Dog.mp3"
+      }
+    ]
+  }
+]
