@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         groupsList.innerHTML = groups.map((g, i) => `
             <li>
                 <span>${g}</span>
-                ${g !== 'General' ? `<span class="delete-group-btn" onclick="deleteGroup(${i})">✖</span>` : ''}
+                ${g !== 'General' ? `<span class="delete-group-btn" data-index="${i}">✖</span>` : ''}
             </li>
         `).join('');
     };
@@ -47,10 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p>${todo.description}</p>
                 </div>
                 <div class="todo-actions">
-                    <button class="action-btn ${todo.completed ? 'uncomplete-btn' : 'complete-btn'}" onclick="toggleTodo(${index})" title="${todo.completed ? 'Restore' : 'Complete'}">
+                    <button class="action-btn toggle-btn ${todo.completed ? 'uncomplete-btn' : 'complete-btn'}" data-index="${index}" title="${todo.completed ? 'Restore' : 'Complete'}">
                         ${todo.completed ? '✖' : '✔'}
                     </button>
-                    <button class="action-btn delete-btn" onclick="deleteTodo(${index})" title="Delete">
+                    <button class="action-btn delete-btn" data-index="${index}" title="Delete">
                         🗑️
                     </button>
                 </div>
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 groupDiv.innerHTML = `
                     <div class="group-header">
                         <h3 class="group-title">${groupName}</h3>
-                        <button class="clear-group-btn" onclick="clearGroupCompleted('${groupName}')">Clear</button>
+                        <button class="clear-group-btn" data-group="${groupName}">Clear</button>
                     </div>
                     <ul class="todo-list">
                         ${todos.map((t, i) => (t.completed && t.group === groupName) ? createTodoItem(t, i) : '').join('')}
@@ -100,14 +100,14 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // меняем статус таски
-    window.toggleTodo = (index) => {
+    const toggleTodo = (index) => {
         todos[index].completed = !todos[index].completed;
         saveState();
         renderTodos();
     };
 
     // удаление одной задачи с поддверждением
-    window.deleteTodo = (index) => {
+    const deleteTodo = (index) => {
         if (confirm('Delete this task?')) {
             todos.splice(index, 1);
             saveState();
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // удаляем групу и перекидываем таски в общую
-    window.deleteGroup = (index) => {
+    const deleteGroup = (index) => {
         const groupToDelete = groups[index];
         if (groupToDelete === 'General') return;
 
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // чистим выполненые в конкретной групке
-    window.clearGroupCompleted = (groupName) => {
+    const clearGroupCompleted = (groupName) => {
         if (confirm(`Clear all completed tasks in "${groupName}"?`)) {
             todos = todos.filter(t => !(t.completed && t.group === groupName));
             saveState();
@@ -170,6 +170,30 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Group already exists!');
         }
     });
+
+    groupsList.addEventListener('click', (e) => {
+        const btn = e.target.closest('.delete-group-btn');
+        if (btn) {
+            deleteGroup(parseInt(btn.dataset.index));
+        }
+    });
+
+    const handleTodoClick = (e) => {
+        const toggleBtn = e.target.closest('.toggle-btn');
+        const deleteBtn = e.target.closest('.delete-btn');
+        const clearBtn = e.target.closest('.clear-group-btn');
+
+        if (toggleBtn) {
+            toggleTodo(parseInt(toggleBtn.dataset.index));
+        } else if (deleteBtn) {
+            deleteTodo(parseInt(deleteBtn.dataset.index));
+        } else if (clearBtn) {
+            clearGroupCompleted(clearBtn.dataset.group);
+        }
+    };
+
+    pendingGroupsContainer.addEventListener('click', handleTodoClick);
+    completedGroupsContainer.addEventListener('click', handleTodoClick);
 
     // запускаем отрисовку при старте
     renderGroups();
