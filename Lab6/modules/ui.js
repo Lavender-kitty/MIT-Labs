@@ -6,7 +6,7 @@ export const UI = {
         return path.startsWith('http') ? path : `${HOST}${path}`;
     },
     
-    // Abstracting rendering block to follow DRY principle
+
     renderCard(data, type, isAdmin = false, onDel = null, idx = 0) {
         const wiki = data.wikiUrl || data.wiki || data.wikiLink;
         const imgPath = this.imgUrl(data.image || data.imageUrl);
@@ -24,12 +24,14 @@ export const UI = {
             `;
         } else {
             return `
-                <div class="soldier-entry reveal-item" style="transition-delay: ${(idx % 10) * 0.05}s">
-                    ${isAdmin ? `<button class="remove-btn" data-id="${data.id}">Kill</button>` : ''}
-                    <img src="${imgPath}" class="soldier-img">
-                    <div class="soldier-info">
-                        <h4>${data.name}</h4>
-                        <p>${data.description}</p>
+                <div class="soldier-entry reveal-item tilt-card" style="transition-delay: ${(idx % 10) * 0.05}s">
+                    <div class="tilt-inner">
+                        ${isAdmin ? `<button class="remove-btn" data-id="${data.id}">Kill</button>` : ''}
+                        <img src="${imgPath}" class="soldier-img">
+                        <div class="soldier-info">
+                            <h4>${data.name}</h4>
+                            <p>${data.description}</p>
+                        </div>
                     </div>
                 </div>
             `;

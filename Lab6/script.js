@@ -103,7 +103,12 @@ class StarfallApp {
         else if (this.order === 'desc') sorted.sort((a, b) => b.name.localeCompare(a.name));
 
         UI.showTroops(sorted, this.troopContainer, this.adminView, (id) => this.kill(id));
-        this.initScrollAnimations();
+        
+
+        setTimeout(() => {
+            this.initScrollAnimations();
+            this.initTiltEffects();
+        }, 50);
     }
 
     initScrollAnimations() {
@@ -118,8 +123,67 @@ class StarfallApp {
 
         document.querySelectorAll('.reveal-item').forEach(el => observer.observe(el));
     }
+    initTiltEffects() {
+        const cards = document.querySelectorAll('.tilt-card');
 
-    async kill(id) {
+        const getTransformStyle = (card, clientX, clientY, scale) => {
+            const rect = card.getBoundingClientRect();
+            const x = clientX - rect.left;
+            const y = clientY - rect.top;
+            const cx = rect.width / 2;
+            const cy = rect.height / 2;
+            const rx = ((y - cy) / cy) * -10;
+            const ry = ((x - cx) / cx) * 10;
+            return `perspective(1000px) scale(${scale}) rotateX(${rx}deg) rotateY(${ry}deg)`;
+        };
+
+        cards.forEach(card => {
+            let timer;
+            let active = false;
+            let lifting = false;
+            let currentX = 0;
+            let currentY = 0;
+
+            card.addEventListener('mouseenter', (e) => {
+                currentX = e.clientX - rect.left;
+                currentY = e.clientY - rect.top;
+
+                timer = setTimeout(() => {
+                    active = true;
+                    lifting = true;
+                    
+                    card.style.transition = 'transform 0.4s ease, box-shadow 0.4s, border-color 0.4s';
+                    card.style.transform = getTransformStyle(card, currentX, currentY, 1.05);
+                    
+                    setTimeout(() => {
+                        lifting = false;
+                    }, 400);
+                }, 750);
+            });
+
+            card.addEventListener('mousemove', e => {
+                currentX = e.clientX - rect.left;
+                currentY = e.clientY - rect.top;
+
+                if (!active) return;
+
+                if (!lifting) {
+                    card.style.transition = 'box-shadow 0.3s, border-color 0.3s';
+                }
+                card.style.transform = getTransformStyle(card, currentX, currentY, 1.05);
+            });
+
+            card.addEventListener('mouseleave', () => {
+                clearTimeout(timer);
+                active = false;
+                lifting = false;
+                card.style.transition = 'transform 0.5s ease, box-shadow 0.5s, border-color 0.5s';
+                card.style.transform = 'perspective(1000px) scale(1) rotateX(0) rotateY(0)';
+            });
+        });
+    }
+
+async kill(id) {
         if (!confirm('Eliminate this record?')) return;
         try {
             await Logic.removeData(`/Unit/${id}`);

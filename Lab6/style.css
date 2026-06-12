@@ -1,5 +1,4 @@
 :root {
-    /* Base palette from Lab1 */
     --crust: #11111b;
     --base: #1e1e2e;
     --mantle: #181825;
@@ -7,12 +6,8 @@
     --surface1: #45475a;
     --text: #cdd6f4;
     --subtext: #a6adc8;
-    
-    /* Highlight colors (Starcraft Factions) */
     --highlight: #4a90e2;
     --err: #f38ba8;
-    
-    /* Radii from Lab1 */
     --radius-lg: 15px;
     --radius-md: 12px;
     --radius-sm: 8px;
@@ -120,7 +115,6 @@ body {
     color: var(--subtext);
 }
 
-/* Switch from Lab6 logic, styled like Lab1 accents */
 .toggle-switch {
     position: relative;
     width: 40px;
@@ -151,13 +145,13 @@ body {
 input:checked + .slider-bar { background-color: var(--highlight); }
 input:checked + .slider-bar:before { transform: translateX(18px); }
 
-/* Portrait from Lab1 style */
 .portrait-section {
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 40px;
     background-color: var(--crust);
-    min-height: 480px;
+    min-height: 600px; 
 }
 
 .hero-card {
@@ -169,16 +163,20 @@ input:checked + .slider-bar:before { transform: translateX(18px); }
 
 .hero-img {
     width: 350px;
-    height: 350px;
+    aspect-ratio: 1024 / 1536;
     border-radius: var(--radius-md);
     border: 3px solid var(--surface1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     object-fit: cover;
     object-position: top;
-    transition: transform 0.4s;
+    background-color: var(--crust);
+    transition: transform 0.6s ease;
 }
 
-.hero-img:hover { transform: scale(1.03); }
+.hero-img:hover {
+    transform: scale(1.05);
+    border-color: var(--highlight);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
 
 .hero-bio { flex: 1; }
 
@@ -213,7 +211,6 @@ input:checked + .slider-bar:before { transform: translateX(18px); }
     color: white;
 }
 
-/* Data Section with Units */
 .data-section { padding: 30px; }
 
 .sub-header {
@@ -267,34 +264,27 @@ select {
 
 .action-btn.hide { display: none; }
 
-/* Grid for Units - Adaptation of Lab1 phrse/content grids */
 .soldier-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
 }
 
+/* мяуууууууу хеееелооууууу */
 .soldier-entry {
     background-color: var(--surface0);
-    border: 1px solid var(--surface1);
+    border: 2px solid var(--surface1);
     border-radius: var(--radius-md);
     overflow: hidden;
     position: relative;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.soldier-entry:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-    border-color: var(--highlight);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .soldier-img {
     width: 100%;
-    height: 220px;
+    aspect-ratio: 1024 / 1536;
     object-fit: cover;
     object-position: top;
-    border-bottom: 1px solid var(--surface1);
 }
 
 .soldier-info { padding: 20px; }
@@ -329,7 +319,6 @@ select {
 
 .remove-btn:hover { transform: scale(1.1); }
 
-/* Spinner with delay to prevent flickering */
 .spinner {
     color: var(--highlight);
     font-size: 1.5rem;
@@ -343,7 +332,6 @@ select {
     to { opacity: 1; }
 }
 
-/* Base class for elements that will be revealed on scroll */
 .reveal-item {
     opacity: 0;
     transform: translateY(30px);
@@ -377,10 +365,28 @@ select {
 }
 
 .close-x {
-    float: right;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background-color: var(--err);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    font-size: 1.8rem;
-    color: var(--subtext);
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border: 2px solid var(--mantle);
+    transition: transform 0.2s;
+    z-index: 10;
+}
+
+.close-x:hover {
+    transform: scale(1.1) rotate(90deg);
 }
 
 .form-row { margin-bottom: 20px; }
@@ -406,7 +412,18 @@ select {
     z-index: 2000;
 }
 
-.notice.hide { display: none; }
+.notice.hide { 
+    display: none !important; 
+}
+
+.tilt-card {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+
+.tilt-inner {
+    transform: translateZ(30px); 
+}
 
 @media (max-width: 768px) {
     .hero-card { flex-direction: column; align-items: center; text-align: center; }
