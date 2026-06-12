@@ -151,6 +151,7 @@ class StarfallApp {
                 timer = setTimeout(() => {
                     active = true;
                     lifting = true;
+                    card.style.zIndex = '100';
                     
                     card.style.transition = 'transform 0.4s ease, box-shadow 0.4s, border-color 0.4s';
                     card.style.transform = getTransformStyle(card, currentX, currentY, 1.05);
@@ -177,6 +178,7 @@ class StarfallApp {
                 clearTimeout(timer);
                 active = false;
                 lifting = false;
+                card.style.zIndex = '';
                 card.style.transition = 'transform 0.5s ease, box-shadow 0.5s, border-color 0.5s';
                 card.style.transform = 'perspective(1000px) scale(1) rotateX(0) rotateY(0)';
             });
