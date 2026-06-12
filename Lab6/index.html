@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starcraft II - Lab 6 (Archive Style)</title>
+    <!-- Connecting Animation Modules -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-terran">
+    <div class="container animate__animated animate__fadeIn">
+        <header class="main-header">
+            <div class="nav-row">
+                <h1 class="brand">Starcraft II Archive</h1>
+                <nav class="faction-selector">
+                    <button class="tab-btn" data-faction="1">Terran</button>
+                    <button class="tab-btn" data-faction="2">Zerg</button>
+                    <button class="tab-btn" data-faction="3">Protoss</button>
+                </nav>
+            </div>
+            <div class="admin-row">
+                <div class="admin-control">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="admin-mode-check">
+                        <span class="slider-bar"></span>
+                    </label>
+                    <span>Administrator Mode</span>
+                </div>
+            </div>
+        </header>
+
+        <section id="hero-area" class="portrait-section">
+            <div class="spinner">Decrypting data...</div>
+        </section>
+
+        <section class="data-section">
+            <h2 class="sub-header">Deployment Units</h2>
+            <div class="controls-row">
+                <div class="view-options">
+                    <select id="troop-sort">
+                        <option value="default">Default Order</option>
+                        <option value="asc">A-Z</option>
+                        <option value="desc">Z-A</option>
+                    </select>
+                    <button id="spawn-btn" class="action-btn hide">Create Unit</button>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <div id="troop-container" class="soldier-grid">
+                    <!-- Units will be injected here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="form-overlay" class="overlay hide">
+        <div class="modal-box animate__animated animate__zoomIn">
+            <span class="close-x">&times;</span>
+            <h2 class="sub-header">Unit Creation Protocol</h2>
+            <form id="troop-form">
+                <div class="form-row">
+                    <label>Designation:</label>
+                    <input type="text" id="in-name" required>
+                </div>
+                <div class="form-row">
+                    <label>Combat Description:</label>
+                    <textarea id="in-desc" required></textarea>
+                </div>
+                <div class="form-row">
+                    <label>Visual Path (URL):</label>
+                    <input type="url" id="in-img" required>
+                </div>
+                <button type="submit" class="action-btn">Confirm Data Entry</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="notice-popup" class="notice hide animate__animated animate__slideInUp"></div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starcraft II - Mission: Starfall</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="theme-terran">
+    <header class="main-header">
+        <div class="logo">Starcraft II</div>
+        <nav class="race-nav">
+            <button class="nav-btn" data-race="1">Terran</button>
+            <button class="nav-btn" data-race="2">Zerg</button>
+            <button class="nav-btn" data-race="3">Protoss</button>
+        </nav>
+        <div class="editor-toggle-container">
+            <label class="switch">
+                <input type="checkbox" id="editor-mode-toggle">
+                <span class="slider round"></span>
+            </label>
+            <span>Editor Mode</span>
+        </div>
+    </header>
+
+    <main id="app">
+        <section id="leader-section" class="content-section">
+            <div class="loading-spinner">Loading data...</div>
+        </section>
+
+        <section id="units-section" class="content-section">
+            <div class="section-header">
+                <h2>Units</h2>
+                <div class="controls">
+                    <select id="sort-select">
+                        <option value="default">Default</option>
+                        <option value="asc">A-Z</option>
+                        <option value="desc">Z-A</option>
+                    </select>
+                    <button id="add-unit-btn" class="btn hidden">Add Unit</button>
+                </div>
+            </div>
+            <div id="units-container" class="units-grid"></div>
+        </section>
+    </main>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modal-title">Add New Unit</h2>
+            <form id="unit-form">
+                <div class="form-group">
+                    <label for="unit-name">Name:</label>
+                    <input type="text" id="unit-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="unit-description">Description:</label>
+                    <textarea id="unit-description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="unit-image">Image URL:</label>
+                    <input type="url" id="unit-image" required>
+                </div>
+                <button type="submit" class="btn">Save Unit</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="error-toast" class="error-toast hidden"></div>
+
+    <script type="module" src="scripts/main.js"></script>
+</body>
+</html>

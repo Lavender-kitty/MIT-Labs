@@ -1,0 +1,42 @@
+:root {
+    --bg-color: #0b0d12;
+    --text-color: #e0e0e0;
+    --header-bg: #1a1c23;
+    --accent-color: #4a90e2;
+    --card-bg: #1f222d;
+    --border-color: #333;
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-heading: 'Impact', sans-serif;
+    --error-color: #ff4d4d;
+    --success-color: #4caf50;
+}
+
+.theme-terran {
+    --bg-color: #121418;
+    --text-color: #cfd8dc;
+    --header-bg: #263238;
+    --accent-color: #2196f3;
+    --card-bg: #37474f;
+    --border-color: #546e7a;
+    --font-heading: 'Arial Black', sans-serif;
+}
+
+.theme-zerg {
+    --bg-color: #1a0a1a;
+    --text-color: #e1bee7;
+    --header-bg: #4a148c;
+    --accent-color: #9c27b0;
+    --card-bg: #6a1b9a;
+    --border-color: #8e24aa;
+    --font-heading: 'Verdana', sans-serif;
+}
+
+.theme-protoss {
+    --bg-color: #0a101a;
+    --text-color: #fff9c4;
+    --header-bg: #fbc02d;
+    --accent-color: #00bcd4;
+    --card-bg: #1a237e;
+    --border-color: #ffd600;
+    --font-heading: 'Trebuchet MS', sans-serif;
+}
