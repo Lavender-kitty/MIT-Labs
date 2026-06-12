@@ -145,8 +145,8 @@ class StarfallApp {
             let currentY = 0;
 
             card.addEventListener('mouseenter', (e) => {
-                currentX = e.clientX - rect.left;
-                currentY = e.clientY - rect.top;
+                currentX = e.clientX;
+                currentY = e.clientY;
 
                 timer = setTimeout(() => {
                     active = true;
@@ -162,8 +162,8 @@ class StarfallApp {
             });
 
             card.addEventListener('mousemove', e => {
-                currentX = e.clientX - rect.left;
-                currentY = e.clientY - rect.top;
+                currentX = e.clientX;
+                currentY = e.clientY;
 
                 if (!active) return;
 
